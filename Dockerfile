@@ -52,7 +52,7 @@ WORKDIR /app/ComfyUI
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install PyTorch with CUDA support
-RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly${PYTORCH_CUDA}
+RUN pip install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly${PYTORCH_CUDA}
 
 # (Optional) Clean up pip cache to reduce image size
 RUN pip cache purge
