@@ -24,7 +24,11 @@ if [ ! -f "$CFG_FILE" ]; then
   echo "↳ Creating ComfyUI-Manager config.ini (uv OFF, no file logging, DB cache)"
   cat > "$CFG_FILE" <<EOF
 [default]
+<<<<<<< HEAD
 use_uv = False
+=======
+use_uv = True
+>>>>>>> recovery
 file_logging = False
 db_mode = cache
 database_url = ${SQLITE_URL}
@@ -64,7 +68,11 @@ declare -A REPOS=(
   ["ComfyUI-Crystools"]="https://github.com/crystian/ComfyUI-Crystools.git"
   ["rgthree-comfy"]="https://github.com/rgthree/rgthree-comfy.git"
   ["ComfyUI-KJNodes"]="https://github.com/kijai/ComfyUI-KJNodes.git"
-  ["ComfyUI_UltimateSDUpscale"]="https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git"
+  ["ComfyUI-GGUF"]="https://github.com/city96/ComfyUI-GGUF.git"
+  ["ComfyUI-VideoHelperSuite"]="https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git"
+  ["ComfyUI-MelBandRoFormer"]="https://github.com/kijai/ComfyUI-MelBandRoFormer.git"
+  ["ComfyUI-Easy-Use"]="https://github.com/yolain/ComfyUI-Easy-Use.git"
+  ["ComfyUI-Base64-Nodes"]="https://github.com/dewittethomas/ComfyUI-Base64-Nodes.git"
 )
 
 if [ ! -f "$INIT_MARKER" ]; then
@@ -86,7 +94,7 @@ if [ ! -f "$INIT_MARKER" ]; then
     req="$dir/requirements.txt"
     if [ -f "$req" ]; then
       echo "  ↳ pip install --upgrade -r $req"
-      python -m pip install --no-cache-dir --upgrade -r "$req"
+      python3 -m pip install --no-cache-dir --upgrade -r "$req"
     fi
   done
 

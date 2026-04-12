@@ -5,6 +5,9 @@
 # Use a minimal Python base image (adjust version as needed)
 FROM python:3.12-slim-bookworm
 
+# CUDA version for PyTorch
+ARG PYTORCH_CUDA=132
+
 # Allow passing in your host UID/GID (defaults 1000:1000)
 ARG UID=1000
 ARG GID=1000
@@ -47,6 +50,9 @@ WORKDIR /app/ComfyUI
 
 # Install ComfyUI dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install PyTorch with CUDA support
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly${PYTORCH_CUDA}
 
 # (Optional) Clean up pip cache to reduce image size
 RUN pip cache purge
