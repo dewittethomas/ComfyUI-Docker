@@ -80,6 +80,21 @@ The first run may take several minutes as it downloads the latest version of Com
 
 ---
 
+### **5. Rebuild**
+
+When any rebuilds are needed, run:
+
+```sh
+docker compose down
+docker compose rm -f
+docker image rm comfyui:latest
+docker builder prune -af
+docker compose build --no-cache
+docker compose up -d
+```
+
+---
+
 ## **Notes & Troubleshooting**
 
 * **Line endings:**
@@ -93,7 +108,11 @@ The first run may take several minutes as it downloads the latest version of Com
   - ComfyUI-Crystools
   - rgthree-comfy
   - ComfyUI-KJNodes
-  - ComfyUI_UltimateSDUpscale
+  - ComfyUI-GGUF
+  - ComfyUI-VideoHelperSuite
+  - ComfyUI-MelBandRoFormer
+  - ComfyUI-Easy-Use
+  - ComfyUI-Base64-Nodes
 
 * **GPU Support:**
   This stack is set up for NVIDIA GPUs. You may need to install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU passthrough to work.
@@ -118,7 +137,11 @@ declare -A REPOS=(
   ["ComfyUI-Crystools"]="https://github.com/crystian/ComfyUI-Crystools.git"
   ["rgthree-comfy"]="https://github.com/rgthree/rgthree-comfy.git"
   ["ComfyUI-KJNodes"]="https://github.com/kijai/ComfyUI-KJNodes.git"
-  ["ComfyUI_UltimateSDUpscale"]="https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git"
+  ["ComfyUI-GGUF"]="https://github.com/city96/ComfyUI-GGUF.git"
+  ["ComfyUI-VideoHelperSuite"]="https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git"
+  ["ComfyUI-MelBandRoFormer"]="https://github.com/kijai/ComfyUI-MelBandRoFormer.git"
+  ["ComfyUI-Easy-Use"]="https://github.com/yolain/ComfyUI-Easy-Use.git"
+  ["ComfyUI-Base64-Nodes"]="https://github.com/dewittethomas/ComfyUI-Base64-Nodes.git"
 )
 ```
 

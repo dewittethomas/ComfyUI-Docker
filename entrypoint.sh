@@ -24,11 +24,7 @@ if [ ! -f "$CFG_FILE" ]; then
   echo "↳ Creating ComfyUI-Manager config.ini (uv OFF, no file logging, DB cache)"
   cat > "$CFG_FILE" <<EOF
 [default]
-<<<<<<< HEAD
 use_uv = False
-=======
-use_uv = True
->>>>>>> recovery
 file_logging = False
 db_mode = cache
 database_url = ${SQLITE_URL}
