@@ -3,6 +3,9 @@
 # ComfyUI Docker Startup File v1.0.2 by John Aldred
 # http://www.johnaldred.com
 # http://github.com/kaouthia
+#
+# Modified by Thomas Dewitte
+# https://github.com/dewittethomas
 
 set -e
 
