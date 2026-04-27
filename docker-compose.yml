@@ -1,6 +1,9 @@
 # ComfyUI Docker Compose File v1.0.1 by John Aldred
 # http://www.johnaldred.com
 # http://github.com/kaouthia
+#
+# Modified by Thomas Dewitte
+# https://github.com/dewittethomas
 
 services:
   comfyui:

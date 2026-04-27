@@ -1,12 +1,15 @@
 # ComfyUI Docker Build File v1.0.1 by John Aldred
 # https://www.johnaldred.com
 # https://github.com/kaouthia
+#
+# Modified by Thomas Dewitte
+# https://github.com/dewittethomas
 
 # Use a minimal Python base image (adjust version as needed)
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim-trixie
 
-# CUDA version for PyTorch
-ARG PYTORCH_CUDA=132
+ENV DEBIAN_FRONTEND=noninteractive
+ARG CUDA_VERSION=130
 
 # Allow passing in your host UID/GID (defaults 1000:1000)
 ARG UID=1000
@@ -36,26 +39,28 @@ RUN chmod +x /entrypoint.sh
 # Switch to non-root user
 USER $UID:$GID
 
-# make ~/.local/bin available on the PATH so scripts like tqdm, torchrun, etc. are found
-ENV PATH=/home/appuser/.local/bin:$PATH
-
 # Set the working directory
 WORKDIR /app
 
 # Clone the ComfyUI repository (replace URL with the official repo)
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git
+RUN git clone --depth 1 --branch master https://github.com/comfyanonymous/ComfyUI.git
 
 # Change directory to the ComfyUI folder
 WORKDIR /app/ComfyUI
+
+RUN pip install --no-cache-dir --upgrade pip
 
 # Install ComfyUI dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install PyTorch with CUDA support
-RUN pip install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly${PYTORCH_CUDA}
+RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu${CUDA_VERSION}
 
 # (Optional) Clean up pip cache to reduce image size
 RUN pip cache purge
+
+# make ~/.local/bin available on the PATH so scripts like tqdm, torchrun, etc. are found
+ENV PATH=/home/appuser/.local/bin:$PATH
 
 # Expose the port that ComfyUI will use (change if needed)
 EXPOSE 8188

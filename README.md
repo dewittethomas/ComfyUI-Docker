@@ -13,7 +13,7 @@ It also makes it easy to update without worrying about potential conflicts. On c
 
 - **Runs ComfyUI in Docker** with GPU (NVIDIA) support - For AMD, see below.
 - **Persistent storage** for models, outputs, settings, and flows.
-- **Automatic custom node installation** (see `entrypoint.sh`).
+- **Automatic custom node installation.**
 - **Simple to install and update.**
 
 ---
@@ -113,6 +113,7 @@ docker compose up -d
   - ComfyUI-MelBandRoFormer
   - ComfyUI-Easy-Use
   - ComfyUI-Base64-Nodes
+  - ComfyUI-FishAudioS2
 
 * **GPU Support:**
   This stack is set up for NVIDIA GPUs. You may need to install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for GPU passthrough to work.
@@ -142,6 +143,7 @@ declare -A REPOS=(
   ["ComfyUI-MelBandRoFormer"]="https://github.com/kijai/ComfyUI-MelBandRoFormer.git"
   ["ComfyUI-Easy-Use"]="https://github.com/yolain/ComfyUI-Easy-Use.git"
   ["ComfyUI-Base64-Nodes"]="https://github.com/dewittethomas/ComfyUI-Base64-Nodes.git"
+  ["ComfyUI-FishAudioS2"]="https://github.com/Saganaki22/ComfyUI-FishAudioS2.git"
 )
 ```
 

@@ -72,6 +72,7 @@ declare -A REPOS=(
   ["ComfyUI-MelBandRoFormer"]="https://github.com/kijai/ComfyUI-MelBandRoFormer.git"
   ["ComfyUI-Easy-Use"]="https://github.com/yolain/ComfyUI-Easy-Use.git"
   ["ComfyUI-Base64-Nodes"]="https://github.com/dewittethomas/ComfyUI-Base64-Nodes.git"
+  ["ComfyUI-FishAudioS2"]="https://github.com/Saganaki22/ComfyUI-FishAudioS2.git"
 )
 
 if [ ! -f "$INIT_MARKER" ]; then
